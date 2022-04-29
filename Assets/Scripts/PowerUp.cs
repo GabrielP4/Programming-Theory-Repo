@@ -14,10 +14,6 @@ public class PowerUp : MonoBehaviour
     private void Update()
     {
         transform.Translate(0, dropSpeed * Time.deltaTime, 0);
-        if (transform.position.y < -5)
-        {
-            Destroy(gameObject);
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -25,7 +21,12 @@ public class PowerUp : MonoBehaviour
         {
             StartCoroutine(Pickup(other));
         }
+        else if (other.CompareTag("DeathZone"))
+        {
+            Destroy(gameObject);
+        }
     }
+
 
     public virtual IEnumerator Pickup(Collider player)
     {

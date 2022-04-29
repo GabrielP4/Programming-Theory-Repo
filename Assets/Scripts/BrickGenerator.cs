@@ -18,6 +18,5 @@ public class BrickGenerator : MonoBehaviour
                 Instantiate(brickPrefab, position, Quaternion.identity);
             }
         }
-        //brickCount = GameObject.FindGameObjectsWithTag("Brick").Length;
     }
 }

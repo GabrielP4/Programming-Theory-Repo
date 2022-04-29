@@ -5,7 +5,6 @@ public class ScaleUp : PowerUp
 {
     public override IEnumerator Pickup(Collider player)
     {
-
         Instantiate(pickupEffect, transform.position, transform.rotation);
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
@@ -25,8 +24,6 @@ public class ScaleUp : PowerUp
             player.transform.localScale -= scaleChange;
             playerStats.Border = 4.25f;
         }
-
-
         Destroy(gameObject);
     }
 }
