@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class BrickGenerator : MonoBehaviour
 {
     public GameObject brickPrefab;
     [SerializeField]
-    private int lineCount = 5;
+    private int lineCount;
     private int perLine = 5;
     const float space = 1.75f;
+
+    public int numberOfBricks { get; private set; }
+
     // Start is called before the first frame update
-    public void GenerateBricks()
+    public int GenerateBricks()
     {
         for (int i = 0; i < lineCount; i++)
         {
@@ -20,5 +20,7 @@ public class BrickGenerator : MonoBehaviour
                 Instantiate(brickPrefab, position, Quaternion.identity);
             }
         }
+        return numberOfBricks = GameObject.FindGameObjectsWithTag("Brick").Length;
     }
+
 }

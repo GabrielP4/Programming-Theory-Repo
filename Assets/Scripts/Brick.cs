@@ -2,8 +2,21 @@ using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
-    public GameObject[] drop;
+    [SerializeField]
+    private GameObject[] drop;
     private void OnCollisionEnter(Collision collision)
+    {
+        GenerateDrop();
+        BrickPoint();
+        Destroy(gameObject, 0.1f);
+    }
+
+    private void BrickPoint()
+    {
+        GameManager.score += 1;
+    }
+
+    private void GenerateDrop()
     {
         int randomDrop = Random.Range(0, 2);
         int randomSpanw = Random.Range(0, 11);
@@ -11,6 +24,5 @@ public class Brick : MonoBehaviour
         {
             Instantiate(drop[randomDrop], transform.position, transform.rotation);
         }
-        Destroy(gameObject, 0.1f);
     }
 }

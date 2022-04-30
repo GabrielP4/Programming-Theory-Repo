@@ -9,12 +9,14 @@ public class PowerUp : MonoBehaviour
     protected float multiplier = 2;
     protected int dropSpeed = -2;
 
-    public GameObject pickupEffect;
+    [SerializeField]
+    protected GameObject pickupEffect;
 
     private void Update()
     {
         transform.Translate(0, dropSpeed * Time.deltaTime, 0);
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -26,7 +28,6 @@ public class PowerUp : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     public virtual IEnumerator Pickup(Collider player)
     {

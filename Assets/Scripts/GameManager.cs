@@ -10,15 +10,21 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject restarText;
     [SerializeField]
-    private Rigidbody Ball;
+    private Rigidbody ball;
+    private int allbricks;
+
+    public static int score;
 
     private void Start()
     {
+        score = 0;
         brickGenerator.GenerateBricks();
+        allbricks = brickGenerator.numberOfBricks;
     }
-    // Update is called once per frame
+
     void Update()
     {
+        BrickCount();
         if (!gameStarted)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -28,8 +34,8 @@ public class GameManager : MonoBehaviour
                 float randomDirection = Random.Range(-1.0f, 1.0f);
                 Vector3 forceDirection = new Vector3(randomDirection, 1, 0);
                 forceDirection.Normalize();
-                Ball.transform.SetParent(null);
-                Ball.AddForce(forceDirection * 5.0f, ForceMode.VelocityChange);
+                ball.transform.SetParent(null);
+                ball.AddForce(forceDirection * 5.0f, ForceMode.VelocityChange);
             }
         }
         else if (gameOver)
@@ -45,5 +51,14 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         restarText.SetActive(true);
+    }
+
+    public void BrickCount()
+    {
+        if (allbricks == score)
+        {
+            GameOver();
+            ball.constraints = RigidbodyConstraints.FreezePosition;
+        }
     }
 }
