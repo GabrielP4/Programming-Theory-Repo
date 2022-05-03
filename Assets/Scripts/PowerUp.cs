@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class PowerUp : MonoBehaviour //INHERITANCE Parent Class fo ScaleUp and SpeedUp
 {
     protected float lastFor = 5;
     protected float fallSpeed;
@@ -29,7 +29,7 @@ public class PowerUp : MonoBehaviour
         }
     }
 
-    public virtual IEnumerator Pickup(Collider player)
+    public virtual IEnumerator Pickup(Collider player) //POLYMORPHISM Base implemenatation of pickup method
     {
         Debug.Log("Power up picked up!");
         yield return new WaitForSeconds(lastFor);

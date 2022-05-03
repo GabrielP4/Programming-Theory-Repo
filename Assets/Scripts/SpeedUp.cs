@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpeedUp : PowerUp
 {
-    public override IEnumerator Pickup(Collider player)
+    public override IEnumerator Pickup(Collider player) //POLYMORPHISM 
     {
         Instantiate(pickupEffect, transform.position, transform.rotation);
         GetComponent<MeshRenderer>().enabled = false;

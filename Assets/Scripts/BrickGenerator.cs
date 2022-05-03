@@ -7,7 +7,7 @@ public class BrickGenerator : MonoBehaviour
     private int perLine = 5;
     const float space = 1.75f;
 
-    public int numberOfBricks { get; private set; }
+    public int numberOfBricks { get; private set; } // ENCAPSULATION
 
     // Start is called before the first frame update
     public int GenerateBricks()

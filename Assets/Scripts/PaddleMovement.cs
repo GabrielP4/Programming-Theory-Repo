@@ -5,13 +5,13 @@ public class PaddleMovement : MonoBehaviour
     private float border = 4.25f; //3.25
     [SerializeField]
     private float speed = 2;
-    public float Border { get => border; set => border = value; }
-    public float Speed { get => speed; set => speed = value; }
+    public float Border { get => border; set => border = value; } // ENCAPSULATION
+    public float Speed { get => speed; set => speed = value; } // ENCAPSULATION
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        Movement(); // ABSTRACTION
     }
 
     private void Movement()
